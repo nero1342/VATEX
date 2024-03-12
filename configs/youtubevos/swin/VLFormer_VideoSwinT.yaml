@@ -1,0 +1,21 @@
+_BASE_: ../VLFormer_R101_bs4_100k.yaml
+MODEL:
+  BACKBONE:
+    NAME: "VideoSwinTransformerBackbone"
+
+  VIDEO_SWIN:
+    VERSION: "video_swin_t_p4w7"
+
+  WEIGHTS: /scratch/partdreamer/lufy/REFCOCO_all_VideoSwinT/model_final.pth
+  PIXEL_MEAN: [123.675, 116.280, 103.530]
+  PIXEL_STD: [58.395, 57.120, 57.375]
+
+INPUT:
+  MIN_SIZE_TEST: 480
+
+SOLVER:
+  IMS_PER_BATCH: 48
+  STEPS: (40000, )
+  MAX_ITER: 60000
+
+  

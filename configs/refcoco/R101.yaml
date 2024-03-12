@@ -1,0 +1,18 @@
+_BASE_: BASE_VATEX.yaml
+MODEL:
+  WEIGHTS: https://dl.fbaipublicfiles.com/maskformer/mask2former/coco/panoptic/maskformer2_R101_bs16_50ep/model_final_b807bd.pkl #https://dl.fbaipublicfiles.com/maskformer/mask2former/cityscapes/panoptic/maskformer2_R101_bs16_90k/model_final_04d286.pkl #"https://dl.fbaipublicfiles.com/maskformer/video_mask2former/ytvis_2019/video_maskformer2_R101_bs16_8ep/model_final_a34dca.pkl"
+  
+  RESNETS:
+    DEPTH: 101
+    STEM_TYPE: "basic"  # not used
+    STEM_OUT_CHANNELS: 64
+    STRIDE_IN_1X1: False
+    OUT_FEATURES: ["res2", "res3", "res4", "res5"]
+    # NORM: "SyncBN"
+    RES5_MULTI_GRID: [1, 1, 1]  # not used
+SOLVER:
+  IMS_PER_BATCH: 8
+  STEPS: (100000,)
+  MAX_ITER: 150000
+TEST:
+  EVAL_PERIOD: 5000

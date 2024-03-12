@@ -1,0 +1,25 @@
+_BASE_: ../BASE_VATEX.yaml
+MODEL:
+  WEIGHTS: "https://dl.fbaipublicfiles.com/maskformer/mask2former/coco/panoptic/maskformer2_swin_large_IN21k_384_bs16_100ep/model_final_f07440.pkl" #"https://dl.fbaipublicfiles.com/maskformer/video_mask2former/ytvis_2021/video_maskformer2_swin_large_IN21k_384_bs16_8ep/model_final_4da256.pkl"
+  BACKBONE:
+    NAME: "D2SwinTransformer"
+  SWIN:
+    EMBED_DIM: 192
+    DEPTHS: [2, 2, 18, 2]
+    NUM_HEADS: [6, 12, 24, 48]
+    WINDOW_SIZE: 12
+    APE: False
+    DROP_PATH_RATE: 0.3
+    PATCH_NORM: True
+    PRETRAIN_IMG_SIZE: 384
+    USE_CHECKPOINT: True
+  PIXEL_MEAN: [123.675, 116.280, 103.530]
+  PIXEL_STD: [58.395, 57.120, 57.375]
+  
+SOLVER:
+  IMS_PER_BATCH: 8
+  STEPS: (70000, )
+  MAX_ITER: 100000
+
+TEST:
+  EVAL_PERIOD: 10000

@@ -1,0 +1,13 @@
+_BASE_: BASE_VATEX.yaml
+
+DATASETS:
+  TRAIN: ("refcoco_train","refcoco+_train", "refcocog_train")
+  TEST: ("refcoco_val",  "refcoco_testA", "refcoco_testB", "refcoco+_val", "refcoco+_testA", "refcoco+_testB", "refcocog_val", "refcocog_test")
+  # TEST: ("refcocog_val", )
+  
+SOLVER:
+  IMS_PER_BATCH: 96
+  BASE_LR: 0.0001
+  STEPS: (110000, 140000)
+  MAX_ITER: 150000
+

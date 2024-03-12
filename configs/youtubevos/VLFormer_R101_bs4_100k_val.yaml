@@ -1,0 +1,17 @@
+_BASE_: VLFormer_R101_bs8_300k_pretrained.yaml
+
+DATASETS:
+  TRAIN: ("ref_ytvos_2021_train",)
+  TEST: ("ref_davis_val",)
+
+SOLVER:
+  IMS_PER_BATCH: 4
+  # STEPS: (70000, )
+  # MAX_ITER: 100000
+  
+INPUT:
+  SAMPLING_FRAME_NUM: 2
+  
+TEST:
+  EVAL_PERIOD: 0
+

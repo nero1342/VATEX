@@ -1,0 +1,28 @@
+_BASE_: ../VLFormer_R101_bs4_100k.yaml
+MODEL:
+  BACKBONE:
+    NAME: "VideoSwinTransformerBackbone"
+
+  VIDEO_SWIN:
+    VERSION: "video_swin_b_p4w7"
+
+  WEIGHTS: /home/thnguyenab/VLFormer/weights/video_swinb_v2.pkl #/home/thnguyenab/ECCV/VLFormer/scratch/hai/REFCOCO_all_videoswinb/model_final.pth
+  PIXEL_MEAN: [123.675, 116.280, 103.530]
+  PIXEL_STD: [58.395, 57.120, 57.375]
+
+INPUT:
+  MIN_SIZE_TEST: 480
+  SAMPLING_FRAME_NUM: 4
+DATASETS:
+  TRAIN: ("refcoco_train","refcoco+_train", "refcocog_train", "ref_ytvos_2021_train",)
+  # TEST: ("refcoco_val",  "refcoco_testA", "refcoco_testB", "refcoco+_val", "refcoco+_testA", "refcoco+_testB", "refcocog_val", "refcocog_test")
+  TEST: ("ref_ytvos_2021_val", )
+SOLVER:
+  IMS_PER_BATCH: 16
+  STEPS: (180000, 220000)
+  MAX_ITER: 250000
+  
+TEST:
+  EVAL_PERIOD: 10000
+
+  
