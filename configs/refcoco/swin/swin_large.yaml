@@ -1,6 +1,6 @@
 _BASE_: ../BASE_VATEX.yaml
 MODEL:
-  WEIGHTS: "https://dl.fbaipublicfiles.com/maskformer/mask2former/coco/panoptic/maskformer2_swin_large_IN21k_384_bs16_100ep/model_final_f07440.pkl" #"https://dl.fbaipublicfiles.com/maskformer/video_mask2former/ytvis_2021/video_maskformer2_swin_large_IN21k_384_bs16_8ep/model_final_4da256.pkl"
+  WEIGHTS: "weights/swin_large_patch4_window12_384_22k.pkl"
   BACKBONE:
     NAME: "D2SwinTransformer"
   SWIN:

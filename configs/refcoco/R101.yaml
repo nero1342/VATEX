@@ -1,6 +1,6 @@
 _BASE_: BASE_VATEX.yaml
 MODEL:
-  WEIGHTS: https://dl.fbaipublicfiles.com/maskformer/mask2former/coco/panoptic/maskformer2_R101_bs16_50ep/model_final_b807bd.pkl #https://dl.fbaipublicfiles.com/maskformer/mask2former/cityscapes/panoptic/maskformer2_R101_bs16_90k/model_final_04d286.pkl #"https://dl.fbaipublicfiles.com/maskformer/video_mask2former/ytvis_2019/video_maskformer2_R101_bs16_8ep/model_final_a34dca.pkl"
+  WEIGHTS: "detectron2://ImageNetPretrained/torchvision/R-101.pkl"
   
   RESNETS:
     DEPTH: 101
