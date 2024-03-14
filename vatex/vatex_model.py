@@ -202,12 +202,13 @@ class VATEX(nn.Module):
 
         return None, (text_word_features, text_word_masks, text_pos, text_sentence_features)
        
-    def forward_noun_phrase(self, images, noun_phrase, num_frames):
+    def forward_noun_phrase(self, images, noun_phrases, num_frames):
+        templeted_sentence = ['a photo of {}'.format(noun_phrase) for noun_phrase in noun_phrases]
         inputs_clip_vision = self.processor(images=images, return_tensors="pt").to(self.device)
         outputs_vision = self.clip_vision(**inputs_clip_vision)
         outputs_patch_vision = self.clip_vision.visual_projection(outputs_vision.last_hidden_state)
 
-        inputs_clip_np = self.tokenizer(noun_phrase, return_tensors = 'pt', padding = True).to(self.device)
+        inputs_clip_np = self.tokenizer(templeted_sentence, return_tensors = 'pt', padding = True).to(self.device)
         outputs_np = self.clip_text(**inputs_clip_np)
         outputs_np = outputs_np.text_embeds.unsqueeze(-1)
 
@@ -265,12 +266,14 @@ class VATEX(nn.Module):
                 
         num_frames = len(images) // len(batched_inputs)
 
-        noun_phrases = [extract_noun_phrase(caption, self.nlp(caption)) for caption in captions]
-        templeted_sentence = ['a photo of {}'.format(noun_phrase) for noun_phrase in noun_phrases]
-
+        
         prob, captions_feat = self.forward_clip_text(captions)
+
+        #CLIP Prior
+        noun_phrases = [extract_noun_phrase(caption, self.nlp(caption)) for caption in captions]
         list_vis = self.forward_noun_phrase(images, noun_phrases, num_frames)
 
+        
         images = [(x - self.pixel_mean) / self.pixel_std for x in images]
         images = ImageList.from_tensors(images, self.size_divisibility)
 
