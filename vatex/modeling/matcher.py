@@ -1,5 +1,3 @@
-# Copyright (c) Facebook, Inc. and its affiliates.
-# Modified by Bowen Cheng from https://github.com/facebookresearch/detr/blob/master/models/matcher.py
 """
 Modules to compute the matching cost and solve the corresponding LSAP.
 """

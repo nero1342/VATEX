@@ -1,5 +1,3 @@
-# Modified by __user__ from: https://github.com/facebookresearch/Mask2Former/blob/main/mask2former_video/modeling/transformer_decoder/video_mask2former_transformer_decoder.py
-
 import logging
 import fvcore.nn.weight_init as weight_init
 from typing import Optional

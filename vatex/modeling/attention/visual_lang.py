@@ -1,7 +1,3 @@
-"""
-Segmentaion Part 
-Modified from DETR (https://github.com/facebookresearch/detr)
-"""
 from collections import defaultdict
 from typing import List, Optional
 

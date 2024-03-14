@@ -1,4 +1,3 @@
-# Copyright (c) Facebook, Inc. and its affiliates.
 import logging
 from copy import deepcopy
 from typing import Callable, Dict, List, Optional, Tuple, Union

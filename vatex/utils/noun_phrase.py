@@ -1,33 +1,5 @@
 import spacy
 
-# # nlp = spacy.load('en_core_web_sm')
-# def correct_sentence(doc, sentence):
-#     # doc = nlp(sentence)
-#     # Find the root of the sentence
-#     root = [token for token in doc if token.head == token][0]
-
-#     # If the root is a verb, return the original sentence
-#     if root.pos_ == "VERB":
-#         return sentence
-#     # If the root is not a verb, find the verb and make it a main verb by adding "is" before it
-#     else:
-#         verbs = [token for token in doc if token.pos_ == "VERB"]
-#         if verbs:
-#             verb = verbs[0]
-#             corrected_sentence = sentence.replace(str(verb), f"is {verb}")
-#             return corrected_sentence
-#     return sentence
-# def extract_main_np(doc):
-#     # Find the root of the sentence
-#     root = [token for token in doc if token.head == token][0]
-#     # Find the noun or noun phrase connected to the root
-#     main_np = [child for child in root.children if child.pos_ in ["NOUN", "PROPN", "PRON"]]
-    
-#     # If a noun is found, return the noun phrase associated to it
-#     if main_np:
-#         noun = main_np[0]
-#         return " ".join([str(token) for token in noun.subtree])
-#     return doc
 def extract_noun_phrase(text, doc, need_index=False):
     # text = text.lower()
 
