@@ -1,5 +1,3 @@
-__author__ = 'licheng'
-
 """
 This interface provides access to four datasets:
 1) refclef
