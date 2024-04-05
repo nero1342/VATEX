@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZ8JLG3Z8G"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FZ8JLG3Z8G');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">
+
+    <title>Cutie</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+    <br><br><br><br>
+    <div class="container">
+        <div class="row text-center" style="font-size:38px">
+            <div class="col">
+                Improving Referring Image Segmentation using Vision-Aware Text Features
+            </div>
+        </div>
+
+        <br>
+        <div class="row text-center" style="font-size:28px">
+            <div class="col">
+                Under Review
+            </div>
+        </div>
+        <br>
+
+        <div class="h-100 row text-center heavy justify-content-md-center" style="font-size:22px;">
+            <div class="col-sm-auto px-lg-4">
+                <a href="https://github.com/itruonghai">Truong-Hai Nguyen*<sup>1</sup></a>
+            </div>
+            <div class="col-sm-auto px-lg-4">
+                <nobr><a href="https://nero1342.github.io">E-Ro Nguyen*<sup>2, 3</sup></a></nobr>
+            </div>
+            <div class="col-sm-auto px-lg-4">
+                <nobr><a href="/">Tuan-Anh Vu<sup>1</sup></a></nobr>
+            </div>
+            <div class="col-sm-auto px-lg-4">
+                <nobr><a href="/">Minh-Triet Tran<sup>2, 3</sup></a></nobr>
+            </div>
+            <div class="col-sm-auto px-lg-4">
+                <nobr><a href="/">Binh-Son Hua<sup>4</sup></a></nobr>
+            </div>
+            <div class="col-sm-auto px-lg-4">
+                <nobr><a href="/">Sai-Kit Yeung<sup>1</sup></a></nobr>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="h-100 row text-center justify-content-md-center" style="font-size:20px;">
+            <div>
+                1. The Hong Kong University of Science and Technology
+            </div>
+            <div>
+                2. University of Science, VNU-HCM, Ho Chi Minh city, Vietnam
+            </div>
+            <div>
+                3. Viet Nam National University, Ho Chi Minh city, Vietnam
+            </div>
+            <div>
+                4. Trinity College Dublin, Ireland
+            </div>
+            
+        </div>    
+        
+        <!-- 
+        <div class="row text-center" style="font-size:28px">
+            <div class="col">
+                <a href="https://github.com/hkchengrex/Cutie">Interactive tool available!</a>
+                <a href="https://github.com/hkchengrex/Cutie"><img width="80%" src="https://i.imgur.com/nqlYqTq.jpg"
+                        alt="gui"></a>
+            </div>
+        </div>
+
+        <br> -->
+
+        <div class="h-100 row text-center justify-content-md-center" style="font-size:20px;">
+            <div class="col-sm-2">
+                <a href="https://arxiv.org/">[arXiv]</a>
+            </div>
+            <!-- <div class="col-sm-2">
+                <a href="https://arxiv.org/pdf/2310.12982.pdf">[Paper]</a>
+            </div> -->
+            <div class="col-sm-2">
+                <a href="https://github.com/nero1342/VATEX">[Code]</a>
+            </div>
+            <div class="col-sm-2">
+                <a
+                    href="">[Demo]</a>
+            </div>
+        </div>
+
+        <br>
+
+        <hr>
+
+        <div class="row" style="font-size:32px">
+            <div class="col">
+                Abstract
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <p style="text-align: justify;">
+                    Referring image segmentation is a challenging task that involves generating pixel-wise segmentation masks 
+                    based on natural language descriptions. Existing methods have relied mostly on visual features to generate 
+                    the segmentation masks while treating text features as supporting components. This over-reliance on visual 
+                    features can lead to suboptimal results, especially in complex scenarios where text prompts are ambiguous or context-dependent. 
+                    To overcome these challenges, we present a novel framework VATEX to improve referring image segmentation by enhancing object 
+                    and context understanding with Vision-Aware Text Feature. Our method involves using CLIP to derive a CLIP Prior that integrates 
+                    an object-centric visual heatmap with text description, which can be used as the initial query in DETR-based architecture for 
+                    the segmentation task. Furthermore, by observing that there are multiple ways to describe an instance in an image, we enforce 
+                    feature similarity between text variations referring to the same visual input by two components: a novel Contextual Multimodal 
+                    Decoder that turns text embeddings into vision-aware text features, and a Meaning Consistency Constraint to ensure further the 
+                    coherent and consistent interpretation of language expressions with the context understanding obtained from the image. 
+                    Our method achieves a significant performance improvement on three benchmark datasets RefCOCO, RefCOCO+ and G-Ref.
+                </p>
+            </div>
+
+            <img width="80%" src="https://i.imgur.com/NLkq6D0.jpg" alt="overview">
+
+        </div>
+
+        <br>
+        <hr>
+        <br>
+
+        <!-- <div class="row" style="font-size:32px">
+            <div class="col">
+                Demo video:
+            </div>
+        </div>
+        <br>
+        <center>
+            <video style="width: 100%" controls>
+                <source
+                    src="https://user-images.githubusercontent.com/7107196/276778222-83a8abd5-369e-41a9-bb91-d9cc1289af70.mp4"
+                    type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <a href="https://raw.githubusercontent.com/hkchengrex/Cutie/main/docs/sources.txt">Video source</a>
+        </center> -->
+
+        <br><br>
+
+        <div style="font-size: 14px;">
+            Contact: E-Ro Nguyen - nero@selab.hcmus.edu.vn
+            <br>
+            <div style="color: lightgray;">
+                Website modified from: https://github.com/ajabri/videowalk/blob/master/index.html
+            </div>
+        </div>
+
+        <br><br>
+
+    </div>
+
+</body>
+
+</html>
