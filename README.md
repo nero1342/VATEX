@@ -69,6 +69,26 @@ Main results on G-Ref
 
 
 
+## Training 
+```
+sh scripts/train.sh 
+```
+or 
+```
+python train_net_video.py --config-file <config-path> --num-gpus <?> OUTPUT_DIR <?>
+```
+for example, to train Resnet101-backbone model in RefCOCO dataset with 2 gpus:
+```
+python train_net_video.py --config-file configs/refcoco/VLFormer_R101_bs8_100k.yaml --num-gpus 2 OUTPUT_DIR output/refcoco-RN101
+```
+
+In terms of resuming the previous training, then add the flag ```--resume``` 
+
+## Evaluation
+```
+python train_net_video.py --config-file <config-path> --num-gpus <?> --eval-only OUTPUT_DIR <output_dir> MODEL.WEIGHTS <weight_path>
+```
+
 
 
 ## Demo
