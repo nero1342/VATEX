@@ -13,6 +13,9 @@ Vision-Aware Text Features in Referring Image Segmentation: From Object Understa
   <a href="https://arxiv.org/abs/2404.08590">
     <img src="https://img.shields.io/badge/arXiv-2404.08590-b31b1b?style=flat-square" alt="arXiv">
   </a>
+  <a href="https://vatex.hkustvgd.com/">
+    <img src="https://img.shields.io/badge/Project-Page-green?style=flat-square" alt="Project Page">
+  </a>
 </p>
 
 
@@ -36,7 +39,8 @@ Vision-Aware Text Features in Referring Image Segmentation: From Object Understa
 
 VATEX achieves state-of-the-art performance on multiple referring image segmentation benchmarks, demonstrating significant improvements over previous methods without requiring any external training data.
 
-<div align="center">
+<div align="left">
+
 
 ### 🎯 RefCOCO
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-referring-image-segmentation-using/referring-expression-segmentation-on-refcoco)](https://paperswithcode.com/sota/referring-expression-segmentation-on-refcoco?p=improving-referring-image-segmentation-using)
@@ -58,6 +62,7 @@ VATEX achieves state-of-the-art performance on multiple referring image segmenta
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-referring-image-segmentation-using/referring-expression-segmentation-on-davis)](https://paperswithcode.com/sota/referring-expression-segmentation-on-davis?p=improving-referring-image-segmentation-using)
 
 </div>
+
 ---
 
 ## 🛠️ **Requirements & Setup**
