@@ -59,9 +59,10 @@ VATEX achieves state-of-the-art performance on multiple referring image segmenta
 
 </div>
 ---
+
 ## 🛠️ **Requirements & Setup**
 
-### **System Requirements**
+### 🖥️ **System Requirements**
 - CUDA 11.1
 - Python 3.8 
 - PyTorch 1.9.0
@@ -80,7 +81,7 @@ Follow the steps outlined in [data.md](docs/data.md) to prepare the datasets.
 2. Place models in the `weights` folder.
 
 ---
-## **Training**
+## 🏋️‍♂️ **Training**
 
 To train VATEX using `train_net_video.py`, first set up the corresponding datasets as described in [data.md](docs/data.md), then execute:
 
@@ -95,7 +96,7 @@ python train_net_video.py --config configs/refcoco/swin/swin_base.yaml --num-gpu
 ```
 To resume training, simply add the flag `--resume`.
 
-## Evaluation
+## 📈 **Evaluation**
 To evaluate a trained model, use the following command:
 ```
 python train_net_video.py --config configs/refcoco/swin/swin_base.yaml --num-gpus 2 --eval-only OUTPUT_DIR ${OUTPUT_DIR} $ MODEL.WEIGHTS link_to_weights
@@ -109,7 +110,7 @@ python train_net_video.py --config configs/refcoco/swin/swin_base.yaml --num-gpu
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Main Results</h2>
+        <h2 class="title is-3">📊 Main Results</h2>
         <div class="content has-text-justified">
           <img src="./assets/table1.png" alt="empty">
           <p>
