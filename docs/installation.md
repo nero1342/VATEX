@@ -7,7 +7,7 @@ First, create conda environment.
 ```
 conda create --name vatex python=3.9 -y
 conda activate vatex
-pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu128
 
 ```
 Then, clone the repository and install the necessary packages.
