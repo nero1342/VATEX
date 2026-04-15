@@ -43,6 +43,7 @@ class YTVISEvaluator(DatasetEvaluator):
         output_dir=None,
         *,
         use_fast_impl=True,
+        save_masks=False,
     ):
         """
         Args:
@@ -85,6 +86,7 @@ class YTVISEvaluator(DatasetEvaluator):
         else:
             self._tasks = tasks
 
+        self._save_masks = save_masks
         self._cpu_device = torch.device("cpu")
 
         self._metadata = MetadataCatalog.get(dataset_name)
@@ -110,10 +112,10 @@ class YTVISEvaluator(DatasetEvaluator):
             inputs: the inputs to a COCO model (e.g., GeneralizedRCNN).
                 It is a list of dict. Each dict corresponds to an image and
                 contains keys like "height", "width", "file_name", "image_id".
-            outputs: the outputs of a COCO model. It is a list of dicts with key
-                "instances" that contains :class:`Instances`.
+            outputs: list of per-image output dicts from the model.
         """
         prediction = instances_to_coco_json_video(inputs, outputs)
+
 
         for i, p in enumerate(prediction):
             pred = p["segmentations"]
@@ -141,9 +143,9 @@ class YTVISEvaluator(DatasetEvaluator):
                 p["inter"] = 0
                 p["union"] = 0
 
-            self.save_single_output(self._output_dir, p, i, True)
+            if self._save_masks:
+                self.save_single_output(self._output_dir, p, i, False)
             del p["segmentations"]
-            # del p["gt"]
 
         self._predictions.extend(prediction)
 
@@ -296,7 +298,7 @@ def instances_to_coco_json_video(inputs, outputs):
     for instance_id, (s, l, m, q) in enumerate(zip(scores, labels, masks, qid)):
         m = np.array(m).astype(np.uint8)
         res = {
-            "id": id, 
+            "id": id,
             "file_names": file_names,
             "expression": exp,
             "video_id": video_id,

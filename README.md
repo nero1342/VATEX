@@ -68,9 +68,9 @@ VATEX achieves state-of-the-art performance on multiple referring image segmenta
 ## 🛠️ **Requirements & Setup**
 
 ### 🖥️ **System Requirements**
-- CUDA 11.1
-- Python 3.8 
-- PyTorch 1.9.0
+- CUDA 12.8
+- Python 3.9
+- PyTorch 2.7
 
 ### 📥 **Installation**
 For detailed setup instructions, refer to [installation.md](docs/installation.md).
@@ -95,7 +95,7 @@ python train_net_video.py --config-file <config-path> --num-gpus <?> OUTPUT_DIR 
 ```
 
 Where OUTPUT_DIR is the directory where the weights and logs will be stored.
-For example, train VATEX with Swin-B backbone with 2 GPU as 
+For example, train VATEX with Swin-B backbone with 2 GPUs:
 ```bash
 python train_net_video.py --config configs/refcoco/swin/swin_base.yaml --num-gpus 2 OUTPUT_DIR results/swin_base
 ```
@@ -103,9 +103,30 @@ To resume training, simply add the flag `--resume`.
 
 ## 📈 **Evaluation**
 To evaluate a trained model, use the following command:
+```bash
+python train_net_video.py --config configs/refcoco/swin/swin_base.yaml \
+    --num-gpus 1 --eval-only \
+    MODEL.WEIGHTS <path_to_weights> \
+    DATASETS.TEST '("refcoco_val",)' \
+    OUTPUT_DIR <output_dir>
 ```
-python train_net_video.py --config configs/refcoco/swin/swin_base.yaml --num-gpus 2 --eval-only OUTPUT_DIR ${OUTPUT_DIR} $ MODEL.WEIGHTS link_to_weights
-```
+
+## 📊 **Reproduced Results**
+
+The table below reports reproduced mIoU scores using the provided weights. Results are slightly lower than the paper due to differences in software environment (PyTorch 2.7 / CUDA 12.8 vs. the original training setup).
+
+| Dataset | Split | Paper (mIoU) | Reproduced (mIoU) |
+|:-------:|:-----:|:------------:|:-----------------:|
+| RefCOCO | val   | 78.16        | 77.08             |
+| RefCOCO | testA | 79.64        | 78.59             |
+| RefCOCO | testB | 75.64        | 74.65             |
+| RefCOCO+ | val  | 70.02        | 69.47             |
+| RefCOCO+ | testA | 74.41       | 73.82             |
+| RefCOCO+ | testB | 62.52       | 61.50             |
+| G-Ref   | val   | 69.73        | 69.54             |
+| G-Ref   | test  | 70.58        | 70.17             |
+
+All models use a Swin-B visual backbone and CLIP textual encoder.
 
 
 
@@ -120,7 +141,7 @@ python train_net_video.py --config configs/refcoco/swin/swin_base.yaml --num-gpu
           <img src="./assets/table1.png" alt="empty">
           <p>
             <br>
-            As shown in the table, our method achieves <span style="font-style: italic; font-weight: 600;">remarkable performance improvements</span> over state-of-the-art methods across all benchmarks on mIoU metrics. Notably, we surpass recent methods like <b>CGFormer</b> and <b>VG-LAW</b> by <span style="font-style: italic; font-weight: 600;">substantial margins</span>: <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+1.23%</span> and <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+3.11%</span> on <b>RefCOCO</b>, <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+1.46%</span> and <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+3.31%</span> on <b>RefCOCO+</b>, and <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+2.16%</span> and <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+4.37%</span> on <b>G-Ref</b> validation splits respectively. The more complex the expressions, the greater the performance gains achieved by VATEX. Even compared to LISA, a large pre-trained vision-language model, VATEX consistently achieves an <span style="font-style: italic; font-weight: 600;">impressive</span> <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">3-5%</span> better performance across all datasets.
+            As shown in the table, our method achieves <span style="font-style: italic; font-weight: 600;">remarkable performance improvements</span> over state-of-the-art methods across all benchmarks on mIoU metrics. Notably, we surpass recent methods like <b>CGFormer</b> and <b>VG-LAW</b> by <span style="font-style: italic; font-weight: 600;">substantial margins</span>: <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+1.23%</span> and <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+3.11%</span> on <b>RefCOCO</b>, <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+1.46%</span> and <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+3.31%</span> on <b>RefCOCO+</b>, and <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+2.16%</span> and <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">+4.37%</span> on <b>G-Ref</b> validation splits respectively. The more complex the expressions, the greater the performance gains achieved by VATEX. Even compared to LISA, a large pre-trained vision-language model, VATEX consistently achieves an <span style="font-style: italic; font-weight: 600;">impressive</span> <span style="color: #2ea44f; text-shadow: 1px 1px 3px rgba(46,164,79,0.3);">3-5%</span> better performance across all datasets. See the <a href="#-reproduced-results">Reproduced Results</a> section for numbers verified with the released weights.
           </p>
         </div>
       </div>

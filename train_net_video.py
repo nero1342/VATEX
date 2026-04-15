@@ -71,7 +71,8 @@ class Trainer(DefaultTrainer):
             output_folder = os.path.join(cfg.OUTPUT_DIR, "inference")
             os.makedirs(output_folder, exist_ok=True)
 
-        return YTVISEvaluator(dataset_name, cfg, True, output_folder)
+        return YTVISEvaluator(dataset_name, cfg, True, output_folder,
+                              save_masks=cfg.TEST.SAVE_MASKS)
 
     @classmethod
     def build_train_loader(cls, cfg):

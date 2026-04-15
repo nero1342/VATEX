@@ -317,17 +317,17 @@ class VATEX(nn.Module):
             )
 
             sentence_feats = outputs["sentence_feats"]
-            
+
             input_per_image = batched_inputs[0]
             image_size = images.image_sizes[0]  # image size without padding after data augmentation
 
             height = input_per_image.get("height", image_size[0])  # raw image size before data augmentation
             width = input_per_image.get("width", image_size[1])
-            out =  retry_if_cuda_oom(self.inference)(mask_cls_result, mask_pred_result, image_size, height, width, sentence_feats)
+            out = retry_if_cuda_oom(self.inference)(mask_cls_result, mask_pred_result, image_size, height, width, sentence_feats)
             out["texts"] = outputs["texts"]
 
             del outputs
-            return out 
+            return out
    
     def prepare_targets(self, targets, images):
         h_pad, w_pad = images.tensor.shape[-2:]

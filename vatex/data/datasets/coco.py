@@ -81,6 +81,9 @@ Category ids in annotations are not in [1, #categories]! We'll apply a mapping f
         record["id"] = record["exp_id"] = img_dict["id"]
         image_id = record["image_id"] = img_dict["id"]
 
+        # Caption may live on the image record (one-expression-per-image format)
+        img_caption = img_dict.get("caption", None)
+
         objs = []
         for i, anno in enumerate(anno_dict_list):
             assert anno["image_id"] == image_id
@@ -90,20 +93,19 @@ Category ids in annotations are not in [1, #categories]! We'll apply a mapping f
             obj = {key: anno[key] for key in ann_keys if key in anno}
             obj["bbox_mode"] = BoxMode.XYWH_ABS
             obj["id"] = i
+            # Fall back to image-level caption when annotation lacks expressions
+            if "expressions" not in obj and img_caption is not None:
+                obj["expressions"] = [img_caption]
             objs.append(obj)
-        
+
         for iobj, obj in enumerate(objs):
-            total_expression.extend(obj["expressions"]) 
+            total_expression.extend(obj["expressions"])
             for i, expression in enumerate(obj["expressions"]):
                 this_record = copy.deepcopy(record)
-                this_record["annotations"] = objs 
+                this_record["annotations"] = objs
                 this_record["anno_id"] = obj["id"]
                 this_record["org_ann_id"] = obj["original_id"]
-                this_record["exp_id"] = i 
-                # this_record["all_exps"] = total_expression
-		
-                #print(obj)
-                #exit(0)
+                this_record["exp_id"] = i
                 dataset_dicts.append(this_record)
 
     logger.info("Loaded {} expressions in COCO format from {}".format(len(dataset_dicts), json_file))

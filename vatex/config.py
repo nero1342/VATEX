@@ -115,6 +115,10 @@ def add_vatex_config(cfg):
     # the original paper.
     cfg.MODEL.MASK_FORMER.IMPORTANCE_SAMPLE_RATIO = 0.75
 
+    # Save predicted masks and visualizations to OUTPUT_DIR during evaluation.
+    # Disabled by default for speed; enable with TEST.SAVE_MASKS True.
+    cfg.TEST.SAVE_MASKS = False
+
     cfg.INPUT.SAMPLING_FRAME_NUM = 2
     cfg.INPUT.SAMPLING_FRAME_RANGE = 20
     cfg.INPUT.SAMPLING_FRAME_SHUFFLE = False
